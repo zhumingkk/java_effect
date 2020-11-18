@@ -13,7 +13,7 @@ public class Services {
   private static final Map<String, Provider> providers = new ConcurrentHashMap<>();
   private static final String DEFAULT_PROVIDER = "<def>";
 
-  public Services() {
+  private Services() {
   }
 
   public static void registerDefaultProvider(Provider p) {
@@ -30,7 +30,7 @@ public class Services {
   }
 
   // service access api
-  private static Service newInstance(String name) {
+  public static Service newInstance(String name) {
     Provider p = providers.get(name);
     if (Objects.isNull(p)) {
       throw new IllegalArgumentException("no provider register with name :" + name);
